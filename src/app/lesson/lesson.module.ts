@@ -16,9 +16,12 @@ import { AttributeDirectiveComponent } from './day2/directives/attribute-directi
 import { NgClassComponent } from './day2/directives/attribute-directive/ng-class/ng-class.component';
 import { NgStyleComponent } from './day2/directives/attribute-directive/ng-style/ng-style.component';
 import { HighLightDirective } from './day2/directives/custom-directive/high-light.directive';
+import { Day3Component } from './day3/day3.component';
+import { ListMovieComponent } from './day3/list-movie/list-movie.component';
+import { ItemMovieComponent } from './day3/item-movie/item-movie.component';
 
 @NgModule({
-  declarations: [LessonComponent, Day1Component, DataBindingComponent, OneWayComponent, TwoWayComponent, Day2Component, DirectivesComponent, StructuralDirectiveComponent, NgIfComponent, NgForComponent, NgSwitchComponent, AttributeDirectiveComponent, NgClassComponent, NgStyleComponent, HighLightDirective],
+  declarations: [LessonComponent, Day1Component, DataBindingComponent, OneWayComponent, TwoWayComponent, Day2Component, DirectivesComponent, StructuralDirectiveComponent, NgIfComponent, NgForComponent, NgSwitchComponent, AttributeDirectiveComponent, NgClassComponent, NgStyleComponent, HighLightDirective, Day3Component, ListMovieComponent, ItemMovieComponent],
   imports: [CommonModule, FormsModule],
   exports: [LessonComponent],
 })

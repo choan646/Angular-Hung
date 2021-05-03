@@ -23,3 +23,4 @@ export class HighLightDirective {
     this.render.setStyle(this.ele.nativeElement, 'backgroundColor', 'blue');
   }
 }
+

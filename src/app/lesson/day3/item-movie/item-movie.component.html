@@ -1,0 +1,10 @@
+<div class="card">
+  <img class="card-img-top" [src]="film.imgUrl" alt="" />
+  <div class="card-body">
+    <h4 class="card-title">{{ film.name }}</h4>
+    <p class="card-text">Detail : {{ film.detail }}</p>
+    <p class="card-text">Price : {{ film.price }}</p>
+    <p class="card-text">Like: {{likeInListLike}}</p>
+  </div>
+  <button class="btn btn-primary" (click)="like()">Like</button>
+</div>
