@@ -1,4 +1,5 @@
 import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { MovieService } from 'src/app/client/services/movie.service';
 import { ItemMovieComponent } from '../item-movie/item-movie.component';
 
 @Component({
@@ -10,36 +11,7 @@ export class ListMovieComponent implements OnInit {
   @ViewChildren(ItemMovieComponent)
   itemMovieTagList!: QueryList<ItemMovieComponent>;
 
-  listMovie = [
-    {
-      id: '1',
-      name: 'Than Chet',
-      price: '20000',
-      detail: 'test detail',
-      imgUrl: '',
-    },
-    {
-      id: '2',
-      name: 'Chi Muoi Ba',
-      price: '25000',
-      detail: 'test detail',
-      imgUrl: '',
-    },
-    {
-      id: '3',
-      name: 'Bo Gia',
-      price: '30000',
-      detail: 'test detail',
-      imgUrl: '',
-    },
-    {
-      id: '4',
-      name: 'Mortal Kombat',
-      price: '15000',
-      detail: 'test detail',
-      imgUrl: '',
-    },
-  ];
+listMovie: any[] = [];
 
   listLikeMovies = [
     {
@@ -64,9 +36,11 @@ export class ListMovieComponent implements OnInit {
     },
   ];
 
-  constructor() {}
+  constructor(private movieService: MovieService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.listMovie = this.movieService.listPhim;
+  }
 
   invokeActionFromChild(eventvalue: any): void {
     // eventvalue.totalLike++;

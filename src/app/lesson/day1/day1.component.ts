@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MovieService } from 'src/app/client/services/movie.service';
 
 @Component({
   selector: 'app-day1',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Day1Component implements OnInit {
 
-  constructor() { }
+  constructor(private movieService: MovieService) { }
 
   ngOnInit(): void {
+    console.log(this.movieService.listPhim)
   }
 
 }
