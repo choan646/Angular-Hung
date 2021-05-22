@@ -9,11 +9,13 @@ import { Day3Component } from './lesson/day3/day3.component';
 import { LessonComponent } from './lesson/lesson.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginComponent } from './provider/login/login.component';
+import { SignUpComponent } from './provider/sign-up/sign-up.component';
+import { DeactiveGuard } from './provider/guard/deactive.guard';
 
 const routes: Routes = [
   {
     path: '',
-    component:LessonComponent
+    component: LessonComponent,
   },
   {
     path: 'lesson1',
@@ -29,25 +31,30 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    loadChildren: ()=> AdminModule,
+    loadChildren: () => AdminModule,
   },
   {
     path: 'client',
-    loadChildren: ()=> ClientModule,
+    loadChildren: () => ClientModule,
   },
   {
     path: 'login',
     component: LoginComponent,
   },
   {
-    path:'404',
-    component: PageNotFoundComponent
+    path: 'signup',
+    component: SignUpComponent,
+    canDeactivate: [DeactiveGuard],
   },
-  {path:'**', redirectTo: '404'}
+  // {
+  //   path:'404',
+  //   component: PageNotFoundComponent
+  // },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes), ProviderModule],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

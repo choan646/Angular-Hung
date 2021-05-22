@@ -5,6 +5,8 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { RouterModule } from '@angular/router';
 import { MoviesTestComponent } from './movies-test/movies-test.component';
 import { CardMovieComponent } from './card-movie/card-movie.component';
+import { DetailMovieComponent } from './detail-movie/detail-movie.component';
+import { ProviderModule } from '../provider/provider.module';
 
 const routes = [
   {
@@ -17,26 +19,30 @@ const routes = [
       },
       {
         path: 'movies',
-        component:MoviesTestComponent,
-      }
-    ]
-  }
-]
+        component: MoviesTestComponent,
+      },
+      {
+        path: 'detail-movie',
+        component: DetailMovieComponent,
+      },
+      {
+        path: 'detail-movie/:idMovie',
+        component: DetailMovieComponent,
+      },
+    ],
+  },
+];
 
 @NgModule({
   declarations: [
     ClientComponent,
     AboutUsComponent,
     MoviesTestComponent,
-    CardMovieComponent
+    CardMovieComponent,
+    DetailMovieComponent,
   ],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-  ],
+  imports: [CommonModule, ProviderModule, RouterModule.forChild(routes)],
   // providers://neu k xai root thi xai o dau khai bao o day
-  exports: [
-    ClientComponent
-  ]
+  exports: [ClientComponent],
 })
-export class ClientModule { }
+export class ClientModule {}

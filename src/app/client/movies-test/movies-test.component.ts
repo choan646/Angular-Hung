@@ -15,7 +15,7 @@ export class MoviesTestComponent implements OnInit {
   ngOnInit(): void {
     this.moviesTest.getDataMovies().subscribe((res) => {
       this.listPhim = res;
-      console.log(this.listPhim);
+      // console.log(this.listPhim);
 
     })
   }

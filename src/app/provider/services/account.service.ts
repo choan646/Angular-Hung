@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +9,7 @@ import { catchError, tap } from 'rxjs/operators';
 export class AccountService {
   constructor(private httpClient: HttpClient) {}
 
-  login(data: any): Observable<any> {
+  callLoginAPI(data: any): Observable<any> {
     const api =
       'https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangNhap';
     return this.httpClient.post(api, data).pipe(
@@ -19,6 +19,16 @@ export class AccountService {
       })
     );
   }
+
+  callSignUpAPI(data: any): Observable<any> {
+    const api = 'https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangKy'
+    return this.httpClient.post(api, data).pipe(tap(),
+    catchError((err)=>{
+      return this.handleErr(err);
+    })
+    )
+  }
+
   handleErr(error: any) {
     switch (error.status) {
       case 500:

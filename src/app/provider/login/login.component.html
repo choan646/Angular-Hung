@@ -1,18 +1,28 @@
-<div class="ml-5">
+<form [formGroup]="loginForm" (ngSubmit)="login(loginForm)" class="ml-5">
   <h1>LOG IN</h1>
-  <form class="example-form">
-    <mat-form-field class="example-full-width">
-      <mat-label>Account: </mat-label>
-      <input matInput placeholder="account" #account>
-    </mat-form-field>
-    <br>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Account: </mat-label>
+    <input matInput formControlName="account" />
+    <mat-error *ngIf="account?.touched && account?.errors">
+      <span *ngIf="account?.errors?.required" class="text text-danger"> Tài khoản không được trống ! </span>
+      <span *ngIf="account?.errors?.minLength" class="text text-danger"> Vui lòng nhập trên 4 ký tự </span>
+    </mat-error>
+  </mat-form-field>
+  <br />
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Password: </mat-label>
+    <input matInput formControlName="password" />
+    <mat-error *ngIf="password?.touched && password?.errors">
+    <span *ngIf="password?.errors?.required" class="text text-danger"> Tài khoản không được trống ! </span>
+    <span *ngIf="password?.errors?.minLength" class="text text-danger"> Vui lòng nhập trên 4 ký tự </span>
+  </mat-error>
+  </mat-form-field>
+
+
+  <br />
   
-    <mat-form-field class="example-full-width">
-        <mat-label>Password: </mat-label>
-        <input matInput placeholder="password" #password>
-      </mat-form-field>
-  </form>
-  <div>
-    <button mat-raised-button color="accent" (click)="login(account.value, password.value)">Login</button>
-  </div>
-</div>
+  <br />
+  <button [disabled]="loginForm.invalid" type="submit" mat-raised-button color="accent">Login</button>
+</form>
